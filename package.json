@@ -7,10 +7,12 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "migrate:dev": "dotenv -e .env.local npx prisma migrate dev",
-    "migrate:prod": "dotenv -e .env npx prisma migrate deploy",
+    "generate": "prisma generate",
+    "migrate:dev": "dotenv -e .env.local prisma migrate dev",
+    "migrate:prod": "prisma migrate deploy",
     "seed:dev": "dotenv -e .env.local node prisma/seed.js",
-    "seed:prod": "dotenv -e .env node prisma/seed.js"
+    "seed:prod": "node prisma/seed.js",
+    "vercel-build": "npm-run-all generate migrate:prod seed:prod build"
   },
   "dependencies": {
     "@prisma/client": "^3.14.0",
@@ -22,6 +24,8 @@
   },
   "devDependencies": {
     "eslint": "8.16.0",
-    "eslint-config-next": "12.1.6"
+    "eslint-config-next": "12.1.6",
+    "npm-run-all": "^4.1.5",
+    "prisma": "^3.14.0"
   }
 }
