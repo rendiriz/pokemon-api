@@ -1,0 +1,21 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model pokemon_color {
+  id       Int     @id @default(autoincrement())
+  name     String
+  isActive Boolean @default(true) @map("is_active")
+}
+
+model pokemon {
+  id             Int     @id @default(autoincrement())
+  idPokemonColor Int     @map("id_pokemon_color")
+  name           String
+  isActive       Boolean @default(true) @map("is_active")
+}
