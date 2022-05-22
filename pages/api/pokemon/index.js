@@ -21,7 +21,12 @@ export default function handler(req, res) {
       },
     });
 
-    res.status(200).json(data);
+    res.status(200).json({
+      code: 200,
+      error: 0,
+      message: "Get data successfull",
+      data,
+    });
   }
 
   async function create() {
@@ -33,6 +38,11 @@ export default function handler(req, res) {
       },
     });
 
-    res.status(200).json(data);
+    res.status(200).json({
+      code: 200,
+      error: 0,
+      message: "Create data successfull",
+      data,
+    });
   }
 }

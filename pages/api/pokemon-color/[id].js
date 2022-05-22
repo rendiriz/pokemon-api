@@ -22,7 +22,12 @@ export default function handler(req, res) {
       },
     });
 
-    res.status(200).json(data);
+    res.status(200).json({
+      code: 200,
+      error: 0,
+      message: "Get single data successfull",
+      data,
+    });
   }
 
   async function update() {
@@ -36,6 +41,11 @@ export default function handler(req, res) {
       },
     });
 
-    res.status(200).json(data);
+    res.status(200).json({
+      code: 200,
+      error: 0,
+      message: "Update data successfull",
+      data,
+    });
   }
 }
