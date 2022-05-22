@@ -12,9 +12,16 @@ export default function handler(req, res) {
   }
 
   async function getAll() {
+    const { search, limit, offset } = req.query;
+
     const data = await prisma.pokemon.findMany({
+      skip: offset ? parseInt(offset) : 0,
+      take: limit ? parseInt(limit) : 10,
       where: {
         isActive: true,
+        name: {
+          endsWith: search,
+        },
       },
       include: {
         pokemonColor: true,

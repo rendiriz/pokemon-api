@@ -10,9 +10,14 @@ export default function handler(req, res) {
   }
 
   async function getTotal() {
+    const { search } = req.query;
+
     const data = await prisma.pokemon.count({
       where: {
         isActive: true,
+        name: {
+          endsWith: search,
+        },
       },
     });
 
