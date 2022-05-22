@@ -8,14 +8,16 @@ datasource db {
 }
 
 model pokemon_color {
-  id       Int     @id @default(autoincrement())
+  id       Int       @id @default(autoincrement())
   name     String
-  isActive Boolean @default(true) @map("is_active")
+  isActive Boolean   @default(true) @map("is_active")
+  pokemon  pokemon[]
 }
 
 model pokemon {
-  id             Int     @id @default(autoincrement())
-  idPokemonColor Int     @map("id_pokemon_color")
+  id             Int           @id @default(autoincrement())
+  pokemonColor   pokemon_color @relation(fields: [idPokemonColor], references: [id])
+  idPokemonColor Int           @map("id_pokemon_color")
   name           String
-  isActive       Boolean @default(true) @map("is_active")
+  isActive       Boolean       @default(true) @map("is_active")
 }

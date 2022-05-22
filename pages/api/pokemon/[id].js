@@ -20,6 +20,9 @@ export default function handler(req, res) {
       where: {
         id: Number(id),
       },
+      include: {
+        pokemonColor: true,
+      },
     });
 
     res.status(200).json(data);

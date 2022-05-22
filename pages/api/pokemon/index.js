@@ -16,6 +16,9 @@ export default function handler(req, res) {
       where: {
         isActive: true,
       },
+      include: {
+        pokemonColor: true,
+      },
     });
 
     res.status(200).json(data);
